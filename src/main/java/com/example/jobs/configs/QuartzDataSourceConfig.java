@@ -24,7 +24,7 @@ public class QuartzDataSourceConfig {
                 .build();
     }
 
-    @Bean
+    @Bean(name = "transactionManager")
     public PlatformTransactionManager schedulerTransactionManager() {
         final DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
         transactionManager.setDataSource(quartzDataSource());
