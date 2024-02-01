@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/user")
@@ -18,6 +19,9 @@ public class UserController {
 
     @GetMapping
     public List<User> getAllUsers() {
+        User user = new User();
+        user.setName(UUID.randomUUID().toString());
+        userRepository.save(user);
         return userRepository.findAll();
     }
 }
